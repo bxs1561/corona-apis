@@ -115,6 +115,6 @@ class ApisController < ApplicationController
   end
 
   def index
-    @api = "PC"
+    @api = "types countries or all to see data"
   end
 end

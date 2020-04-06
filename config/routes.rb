@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get '/all', to:'apis#corona_virus'
   get '/country', to:'apis#country_api'
 
-
+  root "apis#index"
 end
