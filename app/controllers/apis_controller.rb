@@ -10,8 +10,9 @@ class ApisController < ApplicationController
     globe = data["Global"]
     result =[]
     # glob.each do |total|
+    #     # "आपका ईमेल पते की सफलतापूर्वक": globe["TotalConfirmed"],
       result <<{
-          country: "World",
+          देश: "World",
           NewConfirmed: globe["NewConfirmed"],
           TotalConfirmed: globe["TotalConfirmed"],
           NewDeaths: globe["NewDeaths"],
@@ -23,7 +24,7 @@ class ApisController < ApplicationController
       result <<{
 
           # Global: place
-          Country: place["Country"],
+          देश: place["Country"],
           CountryCode: place["CountryCode"],
           Slug: place["Slug"],
           NewConfirmed: place["NewConfirmed"],
@@ -42,7 +43,8 @@ class ApisController < ApplicationController
 
   # Api only for world total
   def corona_virus
-    endpoint = "https://corona.lmao.ninja/all"
+    # endpoint = "https://corona.lmao.ninja/all"
+    endpoint = 'https://corona.lmao.ninja/v2/all'
     response = HTTParty.get(endpoint)
     data = JSON.parse response.body
     res = data
@@ -67,7 +69,8 @@ class ApisController < ApplicationController
 
   # Api for world'total and each countries with lat, longitude and flag
   def country_api
-    endpoint = "https://corona.lmao.ninja/countries"
+    # endpoint = "https://corona.lmao.ninja/countries"
+    endpoint = 'https://corona.lmao.ninja/v2/countries'
     response = HTTParty.get(endpoint)
     data = JSON.parse response.body
     res = data
@@ -112,6 +115,10 @@ class ApisController < ApplicationController
       }
     end
     render json: result
+  end
+
+  def state_Api
+    endpoint = ''
   end
 
   def index
